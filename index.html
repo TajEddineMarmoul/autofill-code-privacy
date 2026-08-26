@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AutoFill Code privacy policy and data-handling disclosures.">
+  <meta name="color-scheme" content="light dark">
+  <title>Privacy Policy · AutoFill Code</title>
+  <style>
+    :root {
+      --page: #f3f8f6;
+      --surface: #ffffff;
+      --surface-soft: #e7f2ee;
+      --ink: #102a24;
+      --muted: #526a63;
+      --brand: #005442;
+      --accent: #36b995;
+      --line: #c9ddd6;
+      --shadow: 0 22px 70px rgba(20, 68, 56, 0.10);
+      --display: Georgia, "Times New Roman", serif;
+      --body: "Segoe UI", Inter, Arial, sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --page: #0c1512;
+        --surface: #121e1a;
+        --surface-soft: #172923;
+        --ink: #edf5f1;
+        --muted: #acc0b9;
+        --brand: #72d6bb;
+        --accent: #66d0b4;
+        --line: #2a4039;
+        --shadow: 0 22px 70px rgba(0, 0, 0, 0.30);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 85% 4%, color-mix(in srgb, var(--accent) 13%, transparent), transparent 28rem),
+        var(--page);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 17px;
+      line-height: 1.72;
+    }
+
+    a {
+      color: var(--brand);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.18em;
+    }
+
+    a:hover {
+      text-decoration-thickness: 2px;
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+
+    .site-header {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 28px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--ink);
+      font-weight: 760;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .privacy-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 12px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 650;
+      letter-spacing: 0.01em;
+    }
+
+    .privacy-badge::before {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      content: "";
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 15%, transparent);
+    }
+
+    .hero {
+      width: min(1120px, calc(100% - 40px));
+      margin: 38px auto 78px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(290px, 0.65fr);
+      align-items: end;
+      gap: 64px;
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--brand);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 820px;
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(44px, 7vw, 84px);
+      font-weight: 500;
+      letter-spacing: -0.055em;
+      line-height: 0.98;
+    }
+
+    .hero-copy {
+      margin: 28px 0 0;
+      max-width: 700px;
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.55;
+    }
+
+    .policy-meta {
+      border-left: 1px solid var(--line);
+      padding-left: 28px;
+    }
+
+    .policy-meta dt {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .policy-meta dd {
+      margin: 2px 0 0;
+      font-size: 15px;
+      font-weight: 650;
+    }
+
+    .flow {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto 84px;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: center;
+      gap: 18px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .flow-step {
+      min-height: 118px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-radius: 14px;
+      background: var(--surface-soft);
+    }
+
+    .flow-step strong {
+      font-size: 16px;
+    }
+
+    .flow-step span {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .flow-arrow {
+      color: var(--brand);
+      font-size: 24px;
+    }
+
+    .flow-note {
+      grid-column: 1 / -1;
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .policy-layout {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 240px minmax(0, 740px);
+      justify-content: space-between;
+      gap: 64px;
+    }
+
+    nav {
+      position: sticky;
+      top: 28px;
+      align-self: start;
+    }
+
+    nav p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      display: block;
+      padding: 7px 0;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: var(--brand);
+    }
+
+    article section {
+      padding: 0 0 58px;
+      scroll-margin-top: 28px;
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      font-family: var(--display);
+      font-size: clamp(30px, 4vw, 42px);
+      font-weight: 500;
+      letter-spacing: -0.035em;
+      line-height: 1.1;
+    }
+
+    h3 {
+      margin: 30px 0 8px;
+      font-size: 17px;
+      line-height: 1.35;
+    }
+
+    p {
+      margin: 0 0 18px;
+    }
+
+    ul,
+    ol {
+      margin: 18px 0;
+      padding-left: 24px;
+    }
+
+    li {
+      margin: 9px 0;
+      padding-left: 5px;
+    }
+
+    .plain-language {
+      padding: 26px 28px;
+      border-left: 4px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+      background: var(--surface-soft);
+      font-size: 18px;
+    }
+
+    .plain-language strong {
+      color: var(--brand);
+    }
+
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 26px 0;
+    }
+
+    .data-card {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface);
+    }
+
+    .data-card strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 15px;
+    }
+
+    .data-card span {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .site-footer {
+      width: min(1120px, calc(100% - 40px));
+      margin: 22px auto 0;
+      padding: 34px 0 54px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 820px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 34px;
+        margin-top: 20px;
+      }
+
+      .policy-meta {
+        border-top: 1px solid var(--line);
+        border-left: 0;
+        padding-top: 10px;
+        padding-left: 0;
+      }
+
+      .flow {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-arrow {
+        transform: rotate(90deg);
+        text-align: center;
+      }
+
+      .policy-layout {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+      body {
+        font-size: 16px;
+      }
+
+      .site-header {
+        align-items: flex-start;
+      }
+
+      .privacy-badge {
+        max-width: 150px;
+        border-radius: 14px;
+      }
+
+      .hero {
+        margin-bottom: 54px;
+      }
+
+      .data-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .site-footer {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="AutoFill Code privacy policy">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="assets/autofill-code-dark-transparent.png">
+        <img src="assets/autofill-code-light-transparent.png" alt="">
+      </picture>
+      <span>AutoFill Code</span>
+    </a>
+    <span class="privacy-badge">No analytics · No developer servers</span>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="policy-title">
+      <div>
+        <p class="eyebrow">Privacy policy</p>
+        <h1 id="policy-title">Your verification codes stay between Gmail, your browser, and the page that asked for them.</h1>
+        <p class="hero-copy">AutoFill Code reads a limited window of recent Gmail messages to find active one-time codes, then matches them locally to compatible verification fields.</p>
+      </div>
+      <dl class="policy-meta">
+        <dt>Effective date</dt>
+        <dd>August 26, 2026</dd>
+        <dt>Applies to</dt>
+        <dd>AutoFill Code browser extension</dd>
+        <dt>Policy status</dt>
+        <dd>Current</dd>
+      </dl>
+    </section>
+
+    <section class="flow" aria-label="How AutoFill Code handles data">
+      <div class="flow-step">
+        <strong>Google Gmail</strong>
+        <span>Provides a bounded set of recent messages after you connect.</span>
+      </div>
+      <span class="flow-arrow" aria-hidden="true">→</span>
+      <div class="flow-step">
+        <strong>Your browser</strong>
+        <span>Finds, stores, expires, and matches codes locally.</span>
+      </div>
+      <span class="flow-arrow" aria-hidden="true">→</span>
+      <div class="flow-step">
+        <strong>Your verification page</strong>
+        <span>Receives only the matched code when filling is allowed.</span>
+      </div>
+      <p class="flow-note">AutoFill Code has no developer-operated server in this flow.</p>
+    </section>
+
+    <div class="policy-layout">
+      <nav aria-label="Policy sections">
+        <p>On this page</p>
+        <a href="#overview">Overview</a>
+        <a href="#data">Data handled</a>
+        <a href="#use">How data is used</a>
+        <a href="#storage">Storage and retention</a>
+        <a href="#sharing">Sharing and transmission</a>
+        <a href="#security">Security</a>
+        <a href="#choices">Your choices</a>
+        <a href="#limited-use">Limited Use</a>
+        <a href="#changes">Changes</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <article>
+        <section id="overview">
+          <h2>Overview</h2>
+          <p class="plain-language"><strong>In plain language:</strong> the extension processes verification data on your device. The developer does not receive your Gmail messages, browsing activity, OAuth token, or verification codes.</p>
+          <p>This policy explains the information AutoFill Code handles to provide its single purpose: finding recent email verification codes and offering or filling them in compatible website fields.</p>
+        </section>
+
+        <section id="data">
+          <h2>Data handled by the extension</h2>
+          <p>Chrome uses broad disclosure categories even when processing happens only on the user's device. AutoFill Code handles the following categories:</p>
+          <div class="data-grid">
+            <div class="data-card"><strong>Personally identifiable information</strong><span>Email addresses found in Gmail headers or displayed beside a verification form.</span></div>
+            <div class="data-card"><strong>Authentication information</strong><span>A short-lived Google OAuth token and extracted one-time verification codes.</span></div>
+            <div class="data-card"><strong>Personal communications</strong><span>A bounded set of recent Gmail message headers, snippets, and text needed to identify codes.</span></div>
+            <div class="data-card"><strong>Web browsing activity</strong><span>The current website origin for open tabs where OTP matching is active. The extension does not build a persistent browsing-history list.</span></div>
+            <div class="data-card"><strong>User activity</strong><span>Only a recognized Send code or Resend code action and its timestamp, used to distinguish a new verification attempt from an old one.</span></div>
+            <div class="data-card"><strong>Website content</strong><span>Nearby OTP labels and input metadata, such as expected length, accepted characters, and a displayed recipient address.</span></div>
+          </div>
+          <p>The extension also handles the selected fill behavior, Gmail scan cursor and timestamps, applied-code identifiers, and temporary per-tab detection state.</p>
+          <p>AutoFill Code does not intentionally collect health information, financial or payment information, precise location, passwords, general click activity, keystroke logs, or page contents unrelated to finding and filling an OTP field.</p>
+        </section>
+
+        <section id="use">
+          <h2>How the data is used</h2>
+          <ol>
+            <li>Authenticate the user's read-only Gmail connection.</li>
+            <li>Inspect a limited recent-email window for active verification codes.</li>
+            <li>Match a code to the current website, compatible OTP field, recipient, and verification attempt.</li>
+            <li>Fill or present that code according to the user's chosen behavior.</li>
+            <li>Prevent expired or previously applied codes from being reused automatically.</li>
+          </ol>
+          <p>Data is not used for advertising, profiling, analytics, credit decisions, lending, or any purpose unrelated to verification-code filling.</p>
+        </section>
+
+        <section id="storage">
+          <h2>Storage and retention</h2>
+          <p>Data is stored in extension-local or session storage on the user's device.</p>
+          <ul>
+            <li>OAuth access tokens are short-lived and removed when Gmail is disconnected.</li>
+            <li>Cached verification codes are removed after their stated expiry or a bounded default lifetime.</li>
+            <li>Applied-code records are retained only until the corresponding code expires.</li>
+            <li>The Gmail scan cursor remains locally so later checks can continue from the last completed scan instead of rereading the inbox.</li>
+            <li>Current website origins, OTP-field metadata, and verification-attempt timestamps use temporary session storage and end with the browser session or tab cleanup.</li>
+          </ul>
+          <p>Disconnecting Gmail clears the token, active-code cache, and Gmail scan state. Removing the extension or clearing its stored data removes the remaining local preferences.</p>
+        </section>
+
+        <section id="sharing">
+          <h2>Sharing and transmission</h2>
+          <p>AutoFill Code communicates directly with Google OAuth and the Gmail API over HTTPS. It does not send Gmail data, website content, OAuth tokens, verification codes, or browsing activity to the developer, analytics providers, advertisers, or data brokers.</p>
+          <p>When filling is enabled, the matched code is written into the detected website field. The extension does not submit the form on the user's behalf.</p>
+          <h3>Remote code</h3>
+          <p>AutoFill Code does not download or execute remote JavaScript, WebAssembly, or other executable logic. All executable code and interface assets are included in the published extension package. Google OAuth and Gmail API responses are treated only as data.</p>
+        </section>
+
+        <section id="security">
+          <h2>Security</h2>
+          <p>Google communication uses HTTPS. OAuth tokens and cached data remain within Chrome extension storage and are not exposed to website scripts. The extension requests read-only Gmail access and limits both its first and subsequent inbox scans by time and message count.</p>
+        </section>
+
+        <section id="choices">
+          <h2>Your choices</h2>
+          <p>Users can switch between automatic filling, confirmation before filling, and disabled filling. Gmail can be disconnected from the extension menu at any time. Users can also remove the extension or clear its stored data through Chrome.</p>
+        </section>
+
+        <section id="limited-use">
+          <h2>Google API and Chrome Web Store Limited Use</h2>
+          <p>AutoFill Code's use and transfer to any other app of information received from Google APIs will adhere to the Google API Services User Data Policy, including the Limited Use requirements.</p>
+          <p>AutoFill Code's handling of user data also complies with the Chrome Web Store User Data Policy, including its Limited Use requirements. The extension does not allow humans to read user data.</p>
+        </section>
+
+        <section id="changes">
+          <h2>Changes to this policy</h2>
+          <p>Material changes to data handling will be reflected on this page and in the Chrome Web Store privacy disclosures before the related extension update is published. The effective date at the top of this page will also be updated.</p>
+        </section>
+
+        <section id="contact">
+          <h2>Contact</h2>
+          <p>For privacy questions, open an issue in the <a href="https://github.com/TajEddineMarmoul/autofill-code-privacy/issues">public privacy repository</a>. Do not include email contents, access tokens, verification codes, or other personal data in a public issue.</p>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2026 AutoFill Code</span>
+    <span>No cookies · No analytics · No tracking pixels</span>
+  </footer>
+</body>
+</html>
