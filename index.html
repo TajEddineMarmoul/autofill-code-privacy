@@ -165,15 +165,15 @@
 
   <main id="top">
     <h1>Privacy Policy</h1>
-    <p class="updated">Effective August 26, 2026</p>
+    <p class="updated">Effective September 7, 2026</p>
 
-    <p class="summary"><strong>Summary:</strong> AutoFill Code reads a limited set of recent Gmail messages to find active verification codes and match them to OTP fields. Processing happens inside the browser. The developer does not receive your emails, codes, OAuth token, or browsing activity.</p>
+    <p class="summary"><strong>Summary:</strong> AutoFill Code reads a limited set of recent Gmail messages to find active verification codes and match them to OTP fields. Gmail content and codes are processed inside the browser. Opera uses a stateless authentication service to renew Google access after browser and PC restarts.</p>
 
     <section>
       <h2>What the extension handles</h2>
       <ul>
         <li><strong>Email addresses:</strong> addresses in Gmail headers or displayed near an OTP form.</li>
-        <li><strong>Authentication data:</strong> a short-lived Google OAuth token and extracted verification codes.</li>
+        <li><strong>Authentication data:</strong> a short-lived Google OAuth token, an encrypted Opera renewal session, and extracted verification codes.</li>
         <li><strong>Email content:</strong> a bounded set of recent Gmail headers, subjects, snippets, and message text needed to find codes.</li>
         <li><strong>Current website:</strong> the origin of an open tab where OTP matching is active. The extension does not create a persistent browsing-history list.</li>
         <li><strong>Verification actions:</strong> only a recognized Send code or Resend code action and its timestamp, used to avoid matching an old code to a new request.</li>
@@ -197,19 +197,21 @@
 
     <section>
       <h2>Storage and retention</h2>
-      <p>Data is stored in extension-local or session storage on the user's device.</p>
+      <p>Product data is stored in extension-local or session storage on the user's device. AutoFill Code also operates a stateless authentication service for Opera token renewal. That service has no user database.</p>
       <ul>
         <li>OAuth tokens are short-lived and removed when Gmail is disconnected.</li>
+        <li>Opera stores an opaque, encrypted renewal session locally. The authentication service decrypts its Google refresh credential only in memory while renewing or revoking access, then returns a newly encrypted session. Request-body logging is disabled.</li>
         <li>Cached codes and applied-code records are removed when the code expires.</li>
         <li>The Gmail scan cursor remains locally so the extension can continue from its last completed check instead of rereading the inbox.</li>
         <li>Website, OTP-field, and verification-attempt state is temporary and ends with the browser session or tab cleanup.</li>
       </ul>
-      <p>Disconnecting Gmail clears the token, active-code cache, and Gmail scan state. Removing the extension or clearing its data removes the remaining preferences.</p>
+      <p>Disconnecting Gmail asks Google to revoke the Opera renewal credential, then clears the local token, encrypted session, active-code cache, and Gmail scan state. Removing the extension or clearing its data removes the remaining values.</p>
     </section>
 
     <section>
       <h2>Sharing and transmission</h2>
-      <p>AutoFill Code communicates directly with Google OAuth and the Gmail API over HTTPS. It does not send user data to the developer, advertisers, analytics providers, or data brokers.</p>
+      <p>AutoFill Code communicates with Google OAuth and the Gmail API over HTTPS. Gmail messages are read directly by the extension from Google and never pass through the authentication service.</p>
+      <p>For Opera, the temporary Google authorization code and OAuth credentials needed for renewal pass through a stateless Cloudflare Worker operated for AutoFill Code. Cloudflare processes those encrypted HTTPS requests as the hosting provider. The service does not receive Gmail messages, website content, extracted verification codes, or browsing activity; it has no user database, advertising, or analytics. Chrome uses its browser-managed OAuth cache, and Firefox does not use this renewal service.</p>
       <p>When filling is enabled, the matched code is written into the detected website field. The extension does not submit the form.</p>
       <p>AutoFill Code does not download or execute remote code. All executable code and interface assets are included in the published extension package.</p>
     </section>
