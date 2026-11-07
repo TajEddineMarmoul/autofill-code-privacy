@@ -165,22 +165,23 @@
 
   <main id="top">
     <h1>Privacy Policy</h1>
-    <p class="updated">Effective September 7, 2026</p>
+    <p class="updated">Effective November 7, 2026</p>
 
-    <p class="summary"><strong>Summary:</strong> AutoFill Code reads a limited set of recent Gmail messages to find active verification codes and match them to OTP fields. Gmail content and codes are processed inside the browser. Opera uses a stateless authentication service to renew Google access after browser and PC restarts.</p>
+    <p class="summary"><strong>Summary:</strong> AutoFill Code reads a limited set of recent messages from Gmail accounts you connect to find active verification codes and match them to OTP fields. Gmail content and codes are processed inside the browser. Accounts have separate credentials and scan state. Connections using the Web OAuth renewal service can stay connected after browser and PC restarts.</p>
 
     <section>
       <h2>What the extension handles</h2>
       <ul>
-        <li><strong>Email addresses:</strong> addresses in Gmail headers or displayed near an OTP form.</li>
-        <li><strong>Authentication data:</strong> a short-lived Google OAuth token, an encrypted Opera renewal session, and extracted verification codes.</li>
+        <li><strong>Email addresses:</strong> connected inbox addresses, addresses in Gmail headers, and complete recipient addresses displayed near an OTP form or entered in an email/username control during that tab's verification flow.</li>
+        <li><strong>Authentication data:</strong> a short-lived Google OAuth token for each account, encrypted renewal sessions for connections using the renewal service, and extracted verification codes.</li>
         <li><strong>Email content:</strong> a bounded set of recent Gmail headers, subjects, snippets, and message text needed to find codes.</li>
         <li><strong>Current website:</strong> the origin of an open tab where OTP matching is active. The extension does not create a persistent browsing-history list.</li>
         <li><strong>Verification actions:</strong> only a recognized Send code or Resend code action and its timestamp, used to avoid matching an old code to a new request.</li>
         <li><strong>OTP field details:</strong> nearby labels and input attributes such as expected length, accepted characters, and a displayed recipient address.</li>
         <li><strong>Extension state:</strong> fill preference, Gmail scan cursor, code expiry, applied-code records, and temporary per-tab state.</li>
+        <li><strong>Optional instant updates:</strong> when you enable this feature on supported Chrome versions, an encrypted browser push subscription, a random device-local deletion capability, Gmail-watch timestamps, and feature status.</li>
       </ul>
-      <p>AutoFill Code does not intentionally collect passwords, payment or financial information, health information, precise location, general click activity, keystrokes, or unrelated page content.</p>
+      <p>AutoFill Code does not intentionally collect passwords, payment or financial information, health information, precise location, general click activity, keystroke logs, or unrelated page content.</p>
     </section>
 
     <section>
@@ -197,28 +198,31 @@
 
     <section>
       <h2>Storage and retention</h2>
-      <p>Product data is stored in extension-local or session storage on the user's device. AutoFill Code also operates a stateless authentication service for Opera token renewal. That service has no user database.</p>
+      <p>Product data is stored in extension-local or session storage on the user's device. Each inbox has separate credentials, active-code cache, scan cursor, and connection status. AutoFill Code also operates a stateless authentication service for Web OAuth token renewal. That service has no user database.</p>
       <ul>
         <li>OAuth tokens are short-lived and removed when Gmail is disconnected.</li>
-        <li>Opera stores an opaque, encrypted renewal session locally. The authentication service decrypts its Google refresh credential only in memory while renewing or revoking access, then returns a newly encrypted session. Request-body logging is disabled.</li>
+        <li>Connections using the renewal service store an opaque, encrypted renewal session locally. The authentication service decrypts its Google refresh credential only in memory while renewing or revoking access, then returns a newly encrypted session. Request-body logging is disabled.</li>
         <li>Cached codes and applied-code records are removed when the code expires.</li>
         <li>The Gmail scan cursor remains locally so the extension can continue from its last completed check instead of rereading the inbox.</li>
-        <li>Website, OTP-field, and verification-attempt state is temporary and ends with the browser session or tab cleanup.</li>
+        <li>Website, recipient address, OTP-field, and verification-attempt state is temporary and ends with the browser session or tab cleanup. A remembered email applies to its website and tab. Masked addresses are not guessed.</li>
+        <li>If you enable instant updates, the push registry retains an HMAC-derived mailbox lookup value, browser push endpoint and public encryption keys, a hash of the device-local deletion capability, and timestamps. It does not store email addresses, Gmail history IDs, email content, OAuth tokens, or codes. The registration is removed when the feature is turned off or the original inbox is disconnected; an unreachable server can leave an obsolete record until later cleanup or an invalid-push response.</li>
       </ul>
-      <p>Disconnecting Gmail asks Google to revoke the Opera renewal credential, then clears the local token, encrypted session, active-code cache, and Gmail scan state. Removing the extension or clearing its data removes the remaining values.</p>
+      <p>Disconnecting an inbox clears its local token, encrypted session, active-code cache, and scan state, and asks Google to revoke its renewal credential when present. Other inboxes remain connected. Disconnect all accounts removes every inbox connection. Removing the extension or clearing its data removes the remaining values.</p>
     </section>
 
     <section>
       <h2>Sharing and transmission</h2>
       <p>AutoFill Code communicates with Google OAuth and the Gmail API over HTTPS. Gmail messages are read directly by the extension from Google and never pass through the authentication service.</p>
-      <p>For Opera, the temporary Google authorization code and OAuth credentials needed for renewal pass through a stateless Cloudflare Worker operated for AutoFill Code. Cloudflare processes those encrypted HTTPS requests as the hosting provider. The service does not receive Gmail messages, website content, extracted verification codes, or browsing activity; it has no user database, advertising, or analytics. Chrome uses its browser-managed OAuth cache, and Firefox does not use this renewal service.</p>
+      <p>For Opera and additional Chromium inboxes using Web OAuth, the temporary Google authorization code and OAuth credentials needed for renewal pass through a stateless Cloudflare Worker operated for AutoFill Code. Cloudflare processes those encrypted HTTPS requests as the hosting provider. The renewal service does not receive Gmail messages, website content, extracted verification codes, or browsing activity; it has no user database, advertising, or analytics. The original native Chrome connection uses its browser-managed OAuth cache, and Firefox does not use this renewal service.</p>
+      <p>If you enable instant updates, Gmail sends a temporary mailbox-change notification to Google Cloud Pub/Sub, which sends an authenticated HTTPS webhook to the Worker. The Worker uses the address transiently to find a keyed device record and sends an encrypted, contentless signal through the browser's push service. It does not store the notification, email address, history ID, message content, or code. The browser then reads Gmail directly. A short-lived signed Google identity assertion is sent only while registering the browser, verified, and discarded. A Gmail OAuth access token is not sent to the Worker for this feature.</p>
       <p>When filling is enabled, the matched code is written into the detected website field. The extension does not submit the form.</p>
       <p>AutoFill Code does not download or execute remote code. All executable code and interface assets are included in the published extension package.</p>
     </section>
 
     <section>
       <h2>Your choices</h2>
-      <p>You can choose automatic filling, confirmation before filling, or disabled filling. You can disconnect Gmail at any time, remove the extension, or clear its stored data through Chrome.</p>
+      <p>You can choose automatic filling, confirmation before filling, or disabled filling. You can connect multiple inboxes, view all codes, filter to one inbox, or follow the email used in the current tab. Fill options lets you reconnect or remove an individual inbox; the profile menu can disconnect all inboxes.</p>
+      <p>On supported Chrome versions, instant updates are separately optional and request notification permission only when enabled. The push watch belongs to the original inbox; every connected inbox participates in automatic polling and verification-page refreshes. You can turn off instant updates, remove the extension, or clear its stored data at any time.</p>
     </section>
 
     <section>
